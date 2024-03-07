@@ -10,10 +10,11 @@ nav img{
     margin: 20px auto;
 
  }
-.resultado{
-    max-height: 80vh;
+
+.resultado {
     padding-left: 20px;
     padding-right: 20px;
+    margin-bottom: 60px; /* Igual a la altura del footer */
 }
 .resultado img{
     max-width: 250px;
@@ -26,6 +27,12 @@ nav img{
 #detalleTecnico{
     padding-left: 0;
 }
+footer {
+    bottom: 0;
+    width: 100%;
+    height: 60px; /* Ajusta la altura del footer según sea necesario */
+}
+
 
  @media(max-width:450px){
     .imagenPrincipal{
@@ -35,5 +42,9 @@ nav img{
     .imagenPrincipal img{
         width: 350px;
      }
+     .resultado{
+        height: 130vh;
+     }
+
  }
  

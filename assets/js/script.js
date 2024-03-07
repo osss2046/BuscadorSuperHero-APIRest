@@ -65,7 +65,15 @@ window.onload = function () {
 
 
                     areaGrafico = $("#chartContainer");
-                    areaGrafico.CanvasJSChart(options4);
+
+                    // Verificar si todos los atributos necesarios para el gráfico tienen un valor mayor que cero
+                    if (datos.powerstats.intelligence > 0 && datos.powerstats.strength > 0 && datos.powerstats.speed > 0 &&
+                        datos.powerstats.durability > 0 && datos.powerstats.power > 0 && datos.powerstats.combat > 0) {
+                        areaGrafico.CanvasJSChart(options4);
+                    } else {
+                        areaGrafico.html('Gráfico no disponible para este superheroe');
+                    }
+                    
                 },
                 error: function(error) {
                     console.log("Error Status: ", error.status)
