@@ -1,0 +1,39 @@
+*{
+    font-size: 16px;
+}
+nav img{
+    width: 50px;
+    padding-right: 10px;
+}
+.imagenPrincipal{
+    width: 626px;
+    margin: 20px auto;
+
+ }
+.resultado{
+    max-height: 80vh;
+    padding-left: 20px;
+    padding-right: 20px;
+}
+.resultado img{
+    max-width: 250px;
+
+}
+#textoParrafos p{
+    font-size: 14px;
+}
+
+#detalleTecnico{
+    padding-left: 0;
+}
+
+ @media(max-width:450px){
+    .imagenPrincipal{
+        width: 350px;
+        margin:20px auto;
+    }
+    .imagenPrincipal img{
+        width: 350px;
+     }
+ }
+ 
