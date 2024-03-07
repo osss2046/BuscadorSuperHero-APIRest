@@ -4,7 +4,13 @@ window.onload = function () {
 
         $('#boton').click(function(){
             numero = $('#Superheroes').val();
-
+            if (isNaN(numero) || numero < 1 || numero > 731) {
+                ocultarDetalleTecnico();
+                $('#resultado').text('Ingrese un número válido entre 1 y 731');
+                return; // Detener la ejecución del código si el número no es válido
+            }else{
+                mostrarDetalleTecnico();
+                $('#resultado').text('');}
             $.ajax({
                 type: "GET",
                 url: "https://www.superheroapi.com/api.php/2187099688299187/" + numero,
@@ -41,21 +47,21 @@ window.onload = function () {
                     };
 
 
+
                     // Suponiendo que ya tienes los datos almacenados en la variable "datos"
                     let detalle = $('#detalleTecnico');
-                    detalle.css('border','1px solid black')
                     // Asignar la imagen del superhéroe
                     detalle.find('img').attr('src', datos.image.url).attr('alt', 'imagen de superhéroe');
                     // Asignar el nombre del superhéroe
                     detalle.find('#nombre').html('<strong>Nombre: </strong>' + datos.name);
                     // Asignar la conexión del superhéroe
-                    detalle.find('#conexion').html('<strong>Conexión: </strong>' + datos.connections['group-affiliation']);
+                    detalle.find('#conexion').html('<strong>Conexión: </strong>' + datos.connections['group-affiliation'] );
                     // Asignar la biografía publicada del superhéroe
-                    detalle.find('#biografiaPublicado').html('<strong>Publicada por:</strong> ' + datos.biography.publisher);
-                    detalle.find('#trabajoOcupacion').html('<strong>Ocupación:</strong> ' + datos.work.occupation);
-                    detalle.find('#biografiaPrimeraAparacion').html('<strong>Primera Aparición:</strong> ' + datos.biography['first-appearance']);
-                    detalle.find('#aparienciaAltura').html('<strong>Altura:</strong> ' + datos.appearance.height[0]+' - '+datos.appearance.height[1]);
-                    detalle.find('#aparienciaPeso').html('<strong>Peso:</strong> ' + datos.appearance.weight[0]+' - '+datos.appearance.weight[1]);
+                    detalle.find('#biografiaPublicado').html('<strong>Publicada por:</strong> ' + datos.biography.publisher +'<hr>');
+                    detalle.find('#trabajoOcupacion').html('<strong>Ocupación:</strong> ' + datos.work.occupation +'<hr>');
+                    detalle.find('#biografiaPrimeraAparacion').html('<strong>Primera Aparición:</strong> ' + datos.biography['first-appearance'] +'<hr>');
+                    detalle.find('#aparienciaAltura').html('<strong>Altura:</strong> ' + datos.appearance.height[0]+' - '+datos.appearance.height[1] +'<hr>');
+                    detalle.find('#aparienciaPeso').html('<strong>Peso:</strong> ' + datos.appearance.weight[0]+' - '+datos.appearance.weight[1] +'<hr>');
                     detalle.find('#biografiaAlias').html('<strong>Alias:</strong> ' + datos.biography.aliases.join(', '));
                     
 
@@ -80,5 +86,15 @@ window.onload = function () {
                 }
             });
         });
+        function ocultarDetalleTecnico() {
+            $('#detalleTecnico').hide();
+            $('#chartContainer').hide();
+        }
+        
+        // Función para mostrar el detalle técnico y el gráfico
+        function mostrarDetalleTecnico() {
+            $('#detalleTecnico').show();
+            $('#chartContainer').show();
+        }
     });
 }
