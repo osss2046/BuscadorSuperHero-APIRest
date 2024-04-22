@@ -6,10 +6,13 @@ nav img{
     padding-right: 10px;
 }
 .imagenPrincipal{
-    width: 350px;
-    margin: auto;
+    width: 436px;
+    margin: 20px auto;
 
  }
+.imagenPrincipal img{
+    height: 50vh;
+}
 
 .resultado {
     padding-left: 20px;
